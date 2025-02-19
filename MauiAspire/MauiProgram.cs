@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+﻿using MauiServiceDefaults;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Hosting;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -38,6 +37,8 @@ namespace MauiAspire
 #endif
             
             var app = builder.Build();
+
+            // TODO can we move this to Extensions?
             app.Services.GetService<MeterProvider>();
             app.Services.GetService<TracerProvider>();
             app.Services.GetService<LoggerProvider>();
