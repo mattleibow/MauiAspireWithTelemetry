@@ -50,6 +50,16 @@ namespace MauiAspire
         {
             IDictionary environmentVariables = Environment.GetEnvironmentVariables();
 
+            // For Android we read the environment variables from a text file that is written to the device/emulator
+            if (OperatingSystem.IsAndroid())
+            {
+                var envVarLines = File.ReadAllLines("/data/local/tmp/ide-launchenv.txt");
+
+                environmentVariables = envVarLines
+                    .Select(line => line.Split('=', 2))
+                    .ToDictionary(parts => parts[0], parts => parts[1]);
+            }
+
             var variablesToInclude = new HashSet<string>
             {
                 "ASPNETCORE_ENVIRONMENT",
