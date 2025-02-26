@@ -79,8 +79,7 @@ public static class Extensions
                     return true;
                 }
                 return errors == System.Net.Security.SslPolicyErrors.None;
-            },
-            SslProtocols = System.Security.Authentication.SslProtocols.Tls12
+            }
         });
 #endif
 
