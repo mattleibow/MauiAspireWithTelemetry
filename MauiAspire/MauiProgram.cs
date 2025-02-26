@@ -102,6 +102,12 @@ namespace MauiAspire
                         }
                     }
 
+                    // Android emulators use 10.0.2.2 as a loopback to the host machine
+                    if (OperatingSystem.IsAndroid() && DeviceInfo.DeviceType == DeviceType.Virtual)
+                    {
+                        value = value.Replace("localhost", "10.0.2.2");
+                    }
+
                     settings.Add(new KeyValuePair<string, string?>(variableName, value));
                 }
             }

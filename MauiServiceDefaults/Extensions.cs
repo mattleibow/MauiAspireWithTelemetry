@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.Metrics;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OpenTelemetry;
@@ -22,6 +21,8 @@ public static class Extensions
 
         builder.Services.ConfigureHttpClientDefaults(http =>
         {
+            http.DisableDevCertSecurityCheck();
+
             // Turn on resilience by default
             http.AddStandardResilienceHandler();
 
@@ -61,6 +62,27 @@ public static class Extensions
             });
 
         builder.AddOpenTelemetryExporters();
+
+        return builder;
+    }
+
+    public static IHttpClientBuilder DisableDevCertSecurityCheck(this IHttpClientBuilder builder)
+    {
+        // TODO not sure how useful #if DEBUG is, come up with another way?
+#if DEBUG
+        builder.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
+            {
+                if (cert is not null && cert.Issuer.Equals("CN=localhost"))
+                {
+                    return true;
+                }
+                return errors == System.Net.Security.SslPolicyErrors.None;
+            },
+            SslProtocols = System.Security.Authentication.SslProtocols.Tls12
+        });
+#endif
 
         return builder;
     }
