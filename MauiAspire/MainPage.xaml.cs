@@ -1,21 +1,20 @@
-﻿namespace MauiAspire
+﻿namespace MauiAspire;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    private readonly WeatherApiClient _weatherApiClient;
+
+    public MainPage(WeatherApiClient weatherApiClient)
     {
-        private readonly WeatherApiClient _weatherApiClient;
+        InitializeComponent();
 
-        public MainPage(WeatherApiClient weatherApiClient)
-        {
-            InitializeComponent();
+        _weatherApiClient = weatherApiClient;
+    }
 
-            _weatherApiClient = weatherApiClient;
-        }
+    private async void OnCounterClicked(object sender, EventArgs e)
+    {
+        var weather = await _weatherApiClient.GetWeatherAsync();
 
-        private async void OnCounterClicked(object sender, EventArgs e)
-        {
-            var weather = await _weatherApiClient.GetWeatherAsync();
-
-            CounterBtn.Text = $"{weather[0].TemperatureC}";
-        }
+        CounterBtn.Text = $"{weather[0].Summary}";
     }
 }
