@@ -40,8 +40,14 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<!-- Needed for enabling HTTP request tracing -->
 	<PropertyGroup Condition="($([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android' or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios') and '$(Configuration)' == 'Debug'">
 		<HttpActivityPropagationSupport>true</HttpActivityPropagationSupport>
+	</PropertyGroup>
+
+	<!-- Needed for enabling metrics on Android -->
+	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android' and '$(Configuration)' == 'Debug'">
+		<MetricsSupport>true</MetricsSupport>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -65,6 +71,10 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.50-ci.main.25161.30" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\MauiApp.ServiceDefaults\Maui.ServiceDefaults.csproj" />
 	</ItemGroup>
 
 
