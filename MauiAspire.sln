@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAspire.ServiceDefaults"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWebApi", "SampleWebApi\SampleWebApi.csproj", "{73FE628E-4071-13A7-FAEF-03256A4C279F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiServiceDefaults", "MauiServiceDefaults\MauiServiceDefaults.csproj", "{EDA2700C-99F7-41AE-AF33-0FC60BA062EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.ServiceDefaults", "MauiApp.ServiceDefaults\Maui.ServiceDefaults.csproj", "{C3DC0DED-9EA7-4FA4-ABF6-E1011DC309AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,10 @@ Global
 		{73FE628E-4071-13A7-FAEF-03256A4C279F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73FE628E-4071-13A7-FAEF-03256A4C279F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73FE628E-4071-13A7-FAEF-03256A4C279F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EDA2700C-99F7-41AE-AF33-0FC60BA062EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EDA2700C-99F7-41AE-AF33-0FC60BA062EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EDA2700C-99F7-41AE-AF33-0FC60BA062EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EDA2700C-99F7-41AE-AF33-0FC60BA062EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3DC0DED-9EA7-4FA4-ABF6-E1011DC309AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3DC0DED-9EA7-4FA4-ABF6-E1011DC309AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3DC0DED-9EA7-4FA4-ABF6-E1011DC309AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3DC0DED-9EA7-4FA4-ABF6-E1011DC309AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
