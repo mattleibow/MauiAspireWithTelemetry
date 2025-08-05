@@ -1,5 +1,9 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OpenTelemetry;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using System.Diagnostics;
 
 namespace SampleMauiApp
 {
@@ -28,7 +32,9 @@ namespace SampleMauiApp
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            
+
+            builder.Services.AddMauiDiagnostics();
+
             var app = builder.Build();
 
             return app;
