@@ -9,12 +9,9 @@ public partial class MainPage : ContentPage
         InitializeComponent();
 
         _weatherApiClient = weatherApiClient;
-    }
 
-    private async void OnCounterClicked(object sender, EventArgs e)
-    {
-        var weather = await _weatherApiClient.GetWeatherAsync();
+        //var weather = await _weatherApiClient.GetWeatherAsync();
 
-        CounterBtn.Text = $"{weather[0].Summary}";
+        cv.ItemsSource = Enumerable.Range(1, 1_000).Select(i => $"Item {i}").ToArray();
     }
 }

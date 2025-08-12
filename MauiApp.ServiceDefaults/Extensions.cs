@@ -52,11 +52,13 @@ namespace Microsoft.Extensions.Hosting
             builder.Services.AddOpenTelemetry()
                 .WithMetrics(metrics =>
                 {
+                    metrics.AddMeter("Microsoft.Maui");
                     metrics.AddHttpClientInstrumentation()
                         .AddRuntimeInstrumentation();
                 })
                 .WithTracing(tracing =>
                 {
+                    tracing.AddSource("Microsoft.Maui");
                     tracing.AddSource(builder.Environment.ApplicationName)
                         // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
                         //.AddGrpcClientInstrumentation()

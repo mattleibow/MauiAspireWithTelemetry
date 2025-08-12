@@ -33,8 +33,6 @@ namespace SampleMauiApp
             builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddMauiDiagnostics();
-
             var app = builder.Build();
 
             return app;
